@@ -24,7 +24,7 @@ app.post("/upload", isFilePayload, checkFileSize, (req, res) => {
 
   Object.keys(files).forEach(async (key) => {
     const filePath = path.join(__dirname, "uploads", files[key].name);
-    storagePath.push(filePath.replaceAll("\\", "/"));
+    storagePath.push(filePath);
     try {
       await files[key].mv(filePath);
     } catch (error) {
