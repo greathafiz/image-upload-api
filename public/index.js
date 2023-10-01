@@ -11,12 +11,16 @@ async function uploadFiles() {
     formData.append(files.item(key).name, files.item(key));
   });
 
-  const response = await fetch("/upload", {
-    method: "post",
-    body: formData,
-  });
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch("/upload", {
+      method: "post",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
 
   document.querySelector("input").value = "";
 
